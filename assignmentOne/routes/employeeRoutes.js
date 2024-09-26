@@ -109,8 +109,7 @@ router.delete("/employees/:eid", async (req, res) => {
     if (!deletedEmployee) {
       return res.status(404).json({ message: "Employee not found" });
     }
-
-    res.status(204).send(); // No content
+    res.status(200).json({ message: "Employee deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }

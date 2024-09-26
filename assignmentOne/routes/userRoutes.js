@@ -14,8 +14,7 @@ router.post("/signup", async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ username, email, password: hashedPassword });
+    const user = new User({ username, email, password });
     await user.save();
     res
       .status(201)
@@ -36,8 +35,9 @@ router.post("/login", async (req, res) => {
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
+
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(400).json({ message: "Invalid credentials password" });
     }
 
     res.status(200).json({ message: "Login successful" });
