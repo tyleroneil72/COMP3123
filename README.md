@@ -16,3 +16,4 @@ This Repository contains
   - Lab Three
   - Lab Four
   - Lab Five
+  - Lab Six
